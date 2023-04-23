@@ -12,24 +12,9 @@ module.exports = {
       template: "src/index.html", // to import index.html file inside index.js
       inject: false,
     }),
-    // Work around for Buffer is undefined:
-    // https://github.com/webpack/changelog-v5/issues/10
-    new webpack.ProvidePlugin({
-      Buffer: ["buffer", "Buffer"],
-    }),
-    new webpack.ProvidePlugin({
-      process: "process/browser",
-    }),
   ],
   devServer: {
     port: 3030, // you can change the port
-  },
-  resolve: {
-    extensions: [".ts", ".js"],
-    fallback: {
-      stream: require.resolve("stream-browserify"),
-      buffer: require.resolve("buffer"),
-    },
   },
   module: {
     rules: [
